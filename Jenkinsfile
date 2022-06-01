@@ -13,22 +13,22 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    gv = load "script.groovy" 
+                    gv = load "script.groovy"
                 }
             }
         }
-        stage('buildJar'){
+        stage("build jar") {
             steps {
-                script{
+                script {
                     gv.buildJar()
                 }
             }
         }
-        
-        stage('buildImage') {
+        stage("build image") {
             steps {
                 script {
                     gv.buildImage()
+
                 }
             }
         }
