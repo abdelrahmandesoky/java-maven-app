@@ -1,13 +1,23 @@
 pipeline {
 
     agent any
+    parameters {
+        choice(name:'VERSION',choice:['1.0.1','1.0.2','1.1.0'],description:'')
+        booleanParam(name:'executeTests',defaultValue:true,description:'')    
+    }
     stages{
         stage('builds'){
             steps {
                 echo 'building the application ...'
+                
             }
         }
         stage('test'){
+            when{
+                expression{
+                    params.executeTests
+                }
+            }
             steps {
                 echo 'testing the application ... '
             }
@@ -15,6 +25,7 @@ pipeline {
         stage('deploy'){
             steps{
                 echo 'deploying the application ...'
+                echo "deploying version ${params.VERSION}"
             }
         }    
     }
