@@ -5,10 +5,9 @@ def buildJar(){
 
 def buildImage() {
     echo 'building the image ...'
-    withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+    docker.withRegistry( '', registryCredential ){
         sh "docker build -t desouky99/demo-app:${VERSION} . "
-        sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh "docker push nanajanashia/demo-app:${VERSION}"
+        sh "docker push desouky99/demo-app:${VERSION}"
 
         }
 }
