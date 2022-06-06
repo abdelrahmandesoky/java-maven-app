@@ -7,8 +7,8 @@ def buildJar(){
 def buildImage() {
     echo 'building the image ...'
     docker.withRegistry( '', registryCredential ){
-        sh "docker build -t desouky99/demo-app:${VERSION} . "
-        sh "docker push desouky99/demo-app:${VERSION}"
+        sh "docker build -t ${IMAGE_NAME} . "
+        sh "docker push ${IMAGE_NAME}"
 
         }
 }
