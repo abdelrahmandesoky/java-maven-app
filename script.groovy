@@ -22,7 +22,7 @@ def deployApp() {
     
     //def dockerComposeCmd="docker-compose -f docker-compose.yaml up --detach"
     
-    def shellCmd="bash ./server"
+    def shellCmd="bash ./server_cmds.sh"
 
     echo 'deploying Docker-compose to EC2 ...'
     echo "deploying version ${params.VERSION}"
